@@ -22,13 +22,74 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				StringBuilder sBuilder = new StringBuilder("Preference:");
+				//writeobject
+				StringBuilder sBuilder = new StringBuilder("First write test\nwriteObject:\nPreference:");
 				long beginTime = new Date().getTime();
 				PreferenceUtils.setObject(MainActivity.this, userInfo);
 				sBuilder.append(new Date().getTime()-beginTime).append("\nObjectFile:");
 				beginTime = new Date().getTime();
 				FileUtils.writeObjectFile(MainActivity.this, UserInfo.class.getSimpleName(),userInfo);
 				sBuilder.append(new Date().getTime()-beginTime);
+				//wite one
+				sBuilder.append("\nwite one field:\nPreference:");
+				beginTime = new Date().getTime();
+				PreferenceUtils.setValue(MainActivity.this, UserInfo.class.getName(), "token", "ttttooookkkeeen");
+				sBuilder.append(new Date().getTime()-beginTime).append("\nObjectFile:");
+				userInfo.token="ttttooookkkeeen";
+				beginTime = new Date().getTime();
+				FileUtils.writeObjectFile(MainActivity.this, UserInfo.class.getSimpleName(),userInfo);
+				sBuilder.append(new Date().getTime()-beginTime);
+				
+				sBuilder.append("\nreadObject:\nPreference:");
+				beginTime = new Date().getTime();
+				PreferenceUtils.getObject(MainActivity.this, UserInfo.class);
+				sBuilder.append(new Date().getTime()-beginTime).append("\nObjectFile:");
+				beginTime = new Date().getTime();
+				FileUtils.readObjectFile(MainActivity.this, UserInfo.class.getSimpleName(), UserInfo.class);
+				sBuilder.append(new Date().getTime()-beginTime);
+				
+				sBuilder.append("\nread one filed:\nPreference:");
+				beginTime = new Date().getTime();
+				PreferenceUtils.getValue(MainActivity.this, UserInfo.class.getName(),"");
+				sBuilder.append(new Date().getTime()-beginTime).append("\nObjectFile:");
+				beginTime = new Date().getTime();
+				FileUtils.readObjectFile(MainActivity.this, UserInfo.class.getSimpleName(), UserInfo.class);
+				sBuilder.append(new Date().getTime()-beginTime);
+				//writeobject
+				sBuilder.append("Second write test\nwriteObject:\nPreference:");
+				beginTime = new Date().getTime();
+				PreferenceUtils.setObject(MainActivity.this, userInfo);
+				sBuilder.append(new Date().getTime()-beginTime).append("\nObjectFile:");
+				beginTime = new Date().getTime();
+				FileUtils.writeObjectFile(MainActivity.this, UserInfo.class.getSimpleName(),userInfo);
+				sBuilder.append(new Date().getTime()-beginTime);
+				
+				//wite one
+				sBuilder.append("\nwite one field:\nPreference:");
+				beginTime = new Date().getTime();
+				PreferenceUtils.setValue(MainActivity.this, UserInfo.class.getName(), "token", "ttttooookkkeeen");
+				sBuilder.append(new Date().getTime()-beginTime).append("\nObjectFile:");
+				userInfo.token="ttttooookkkeeen";
+				beginTime = new Date().getTime();
+				FileUtils.writeObjectFile(MainActivity.this, UserInfo.class.getSimpleName(),userInfo);
+				sBuilder.append(new Date().getTime()-beginTime);
+				
+				sBuilder.append("\nreadObject:\nPreference:");
+				beginTime = new Date().getTime();
+				PreferenceUtils.getObject(MainActivity.this, UserInfo.class);
+				sBuilder.append(new Date().getTime()-beginTime).append("\nObjectFile:");
+				beginTime = new Date().getTime();
+				FileUtils.readObjectFile(MainActivity.this, UserInfo.class.getSimpleName(), UserInfo.class);
+				sBuilder.append(new Date().getTime()-beginTime);
+				
+				sBuilder.append("\nread one filed:\nPreference:");
+				beginTime = new Date().getTime();
+				PreferenceUtils.getValue(MainActivity.this, UserInfo.class.getName(),"");
+				sBuilder.append(new Date().getTime()-beginTime).append("\nObjectFile:");
+				beginTime = new Date().getTime();
+				FileUtils.readObjectFile(MainActivity.this, UserInfo.class.getSimpleName(), UserInfo.class);
+				sBuilder.append(new Date().getTime()-beginTime);
+				
 				((TextView)findViewById(R.id.info_tv)).setText(sBuilder.toString());
 			}
 		});
